@@ -1,0 +1,22 @@
+Example 1:
+Background: No background
+User query: Generate and image from the following description: A funny looking dad.
+API calling 1: POST /openai/deployments/Dalle3/images/generations with body where prompt="A funny looking dad"
+                {
+                    "prompt": "A funny looking dad",
+                    "size": "1024x1792",
+                    "n": 1,
+                    "quality": "hd",
+                    "response_format": "url",
+                    "style": "vivid"
+                }
+API response: Successful response
+{
+  "created": 1719911436,
+  "data": [
+    {
+      "revised_prompt": "A funny looking dad.",
+      "url": "https://dalleproduse.blob.core.windows.net/private/images/7d69f14c-a9bc-4ce6-b16e-1d33e9ca91ca/generated_00.png?se=2024-07-03T09%3A11%3A05Z&sig=HzfwrC768EhsSfHCUXWWjIAka1vfVVM0ZASiXm73qa4%3D&ske=2024-07-09T01%3A24%3A25Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2024-07-02T01%3A24%3A25Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Example 1:
+User query: How much credit do I have left?
+Plan step 1: Retrieve user credit info.
+API response: Information on how much credit is left.
+Thought: I have finished executing the plan and completed the user's instructions.
+Final Answer: Successfully displayed all tasks.

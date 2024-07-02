@@ -1,0 +1,7 @@
+Example 1:
+User query: Send an email with the following subject "Status update" and body "This is a test".
+Plan step 1: Send the email with the subject "Status update" and body "This is a test".
+API calling 1: Send and email request.
+API response: Successfully sent request to send the email.
+Thought: I have finished executing the plan and completed the user's instructions and collected the data.
+Final Answer: Successfully sent the email.

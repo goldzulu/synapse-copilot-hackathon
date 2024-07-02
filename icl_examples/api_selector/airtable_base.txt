@@ -1,0 +1,45 @@
+Example 1:
+Background: No background
+User query: Retrieve jokes.
+API calling 1: GET /v0/appj6bpbDGg64GaJv/Jokes
+API response:
+{
+  "records": [
+    {
+      "id": "recRYHi348RvP7iVK",
+      "createdTime": "2024-06-25T19:06:25.000Z",
+      "fields": {
+        "Joke": "How did the chicken cross the road",
+        "Status": "Todo"
+      }
+    }
+  ]
+}
+
+Example 2:
+Background: No background
+User query: Create a new joke: "Why did the chicken cross the road?" with body where Joke="Why did the chicken cross the road?" and Status="Todo"
+{
+                  "records": [
+                    {
+                      "fields": {
+                        "Joke": "What is 1+1",
+                        "Status": "Todo"
+                      }
+                    }
+                  ]
+}
+API calling 1: POST /v0/appj6bpbDGg64GaJv/Jokes
+API response:
+{
+  "records": [
+    {
+      "id": "recRYHi348RvP7iVK",
+      "createdTime": "2024-06-25T19:06:25.000Z",
+      "fields": {
+        "Joke": "Why did the chicken cross the road?",
+        "Status": "Todo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Airtable",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.airtable.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "inheritAuth": {
+        "type": "http",
+        "scheme": "inherit"
+      }
+    }
+  },
+  "security": [
+    {
+      "inheritAuth": []
+    }
+  ],
+  "paths": {
+    "/v0/appj6bpbDGg64GaJv/Jokes": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "List jokes",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer {token}"
+          },
+          {
+            "name": "maxRecords",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 26 Jun 2024 02:07:22 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "187"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "brwConsent=opt-out; path=/; expires=Wed, 26 Jun 2024 02:12:21 GMT; domain=.airtable.com; samesite=none; secure"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tengine"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=31536000; includeSubDomains; preload"
+                }
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string",
+                  "example": "DELETE,GET,OPTIONS,PATCH,POST,PUT"
+                }
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string",
+                  "example": "authorization,content-length,content-type,user-agent,x-airtable-application-id,x-airtable-user-agent,x-api-version,x-requested-with"
+                }
+              },
+              "X-Frame-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "DENY"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "content-encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              },
+              "airtable-uncompressed-content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "304"
+                }
+              },
+              "airtable-datacenter-regions": {
+                "schema": {
+                  "type": "string",
+                  "example": "us-east-1"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "records": [
+                    {
+                      "id": "recRYHi348RvP7iVK",
+                      "createdTime": "2024-06-25T19:06:25.000Z",
+                      "fields": {
+                          "Joke": "Why did the chicken cross the road?",
+                          "Status": "Todo"
+                      }
+                    },
+                    {
+                      "id": "recFSkVdq02mcg8MA",
+                      "createdTime": "2024-06-25T19:06:25.000Z",
+                      "fields": {}
+                    },
+                    {
+                      "id": "recRfIj15Nei3YZ5G",
+                      "createdTime": "2024-06-25T19:06:25.000Z",
+                      "fields": {}
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Create Joke",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "records": [
+                    {
+                      "fields": {
+                        "Joke": "Why did the chicken cross the road?",
+                        "Image": "",
+                        "Speech": "",
+                        "Status": "Todo"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer {token}"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 26 Jun 2024 02:12:17 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "137"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "brwConsent=opt-out; path=/; expires=Wed, 26 Jun 2024 02:17:17 GMT; domain=.airtable.com; samesite=none; secure"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tengine"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=31536000; includeSubDomains; preload"
+                }
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string",
+                  "example": "DELETE,GET,OPTIONS,PATCH,POST,PUT"
+                }
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string",
+                  "example": "authorization,content-length,content-type,user-agent,x-airtable-application-id,x-airtable-user-agent,x-api-version,x-requested-with"
+                }
+              },
+              "X-Frame-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "DENY"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "content-encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              },
+              "airtable-uncompressed-content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "137"
+                }
+              },
+              "airtable-datacenter-regions": {
+                "schema": {
+                  "type": "string",
+                  "example": "us-east-1"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "records": [
+                    {
+                      "id": "recRYHi348RvP7iVK",
+                      "createdTime": "2024-06-25T19:06:25.000Z",
+                      "fields": {
+                          "Name": "What is 1+1",
+                          "Status": "Todo"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v0/appj6bpbDGg64GaJv/Jokes/recRYHi348RvP7iVK": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Retrieve A Record",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer {token}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 26 Jun 2024 02:11:27 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "141"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "brwConsent=opt-out; path=/; expires=Wed, 26 Jun 2024 02:16:27 GMT; domain=.airtable.com; samesite=none; secure"
+                }
+              },
+              "Server": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tengine"
+                }
+              },
+              "Strict-Transport-Security": {
+                "schema": {
+                  "type": "string",
+                  "example": "max-age=31536000; includeSubDomains; preload"
+                }
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string",
+                  "example": "DELETE,GET,OPTIONS,PATCH,POST,PUT"
+                }
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string",
+                  "example": "authorization,content-length,content-type,user-agent,x-airtable-application-id,x-airtable-user-agent,x-api-version,x-requested-with"
+                }
+              },
+              "X-Frame-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "DENY"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "example": "nosniff"
+                }
+              },
+              "Vary": {
+                "schema": {
+                  "type": "string",
+                  "example": "Accept-Encoding"
+                }
+              },
+              "content-encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "gzip"
+                }
+              },
+              "airtable-uncompressed-content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "130"
+                }
+              },
+              "airtable-datacenter-regions": {
+                "schema": {
+                  "type": "string",
+                  "example": "us-east-1"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                      "id": "recRYHi348RvP7iVK",
+                      "createdTime": "2024-06-25T19:06:25.000Z",
+                      "fields": {
+                          "Joke": "If a mum is short, do you call her mini-mum?\n",
+                          "Status": "Todo"
+                      }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

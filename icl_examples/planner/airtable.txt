@@ -1,0 +1,14 @@
+Example 1:
+User query: Display all tasks.
+Plan step 1: Retrieve all tasks from the table named "Task".
+API response: List of all tasks retrieved each having a "Name" and "Status" field.
+Thought: I have finished executing the plan and completed the user's instructions.
+Final Answer: Successfully displayed all tasks.
+
+Example 2:
+User query: Display all tasks that has a "Status" of "Todo".
+Plan step 1: Retrieve all tasks from the table named "Task".
+API response: List of all records retrieved with the "Name" and "Status" fields for each record.
+Instruction: Use the format Name: [Name], Status: [Status] to display the fields for each retrieved tasks that has the status of "Todo".
+Thought: I have finished executing the plan and completed the user's instructions.
+Final Answer: Successfully displayed all tasks that has a status of Todo.

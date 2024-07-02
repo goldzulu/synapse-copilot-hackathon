@@ -1,0 +1,7 @@
+Example 1:
+User query: Generate the speech for the following text "This is a test".
+Plan step 1: Generate the speech for the text "This is a test".
+API calling 1: Text to speech request.
+API response: Successfully sent request to generate the speech.
+Thought: I have finished executing the plan and completed the user's instructions and collected the data.
+Final Answer: Successfully generated the speech "This is a test".

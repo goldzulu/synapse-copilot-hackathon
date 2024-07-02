@@ -1,0 +1,528 @@
+openapi: 3.0.0
+info:
+  title: zerocodekit
+  description: >-
+    What does 0CodeKit (formerly 1saas.co) do? We solve low code and no code
+    issues. So you break limits and achieve more without limits.
+
+
+    # Overview
+
+
+    We have build an API that is easy but yet quite powerful.
+
+
+    **The feeling** you get when working with 0CodeKit (formerly 1saas.co) and
+    break limits. AMAZING!
+
+
+    # Authentication
+
+
+    We use the authorizing API Key in the header.
+
+
+    # Error Codes
+
+
+    We handle most of the errors generically. Still if you get errors please
+    send a email to: [wecare@1saas.co](https://wecare@1saas.co)
+
+
+    # Special [☝️](https://emojipedia.org/index-pointing-up/)
+
+
+    We use **everywhere POST requests**. Yes we do this!
+
+
+    Even if you want to get a file or update a value. You need to do a POST
+    request. This has scalability reasons to deliver faster. Keep this in mind
+    0CodeKit (formerly 1saas.co) is made to scale.
+
+
+    # Rate limit
+
+
+    Microsofts Datacenters are the limit. 😂
+
+
+    Let's break limits!
+
+
+    👇👇👇👇👇👇👇👇
+  version: v2
+servers:
+  - url: http://{{baseurl}}
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: http
+      scheme: apikey
+security:
+  - apikeyAuth: []
+tags:
+  - name: user
+  - name: user > Retrieve Credits
+  - name: user > Get Available IP Address
+  - name: Storage
+  - name: Storage > JSON
+  - name: Storage > Global Variables
+  - name: Storage > Store Files 24 Hours
+    description: >-
+      This endpoint can be used to store a file for 24 hours.
+
+
+      | **Property** | **Description** |
+
+      | --- | --- |
+
+      | `fileName` | Name of the file |
+
+      | `buffer` | Buffer of the file |
+
+
+      The request will be replied with an URL in the response from which the
+      file can be downloaded.
+  - name: Storage > Store Files Permanently
+    description: >-
+      This endpoint can be used to store blob files in our storage service for
+      longer periods of time (up to a year).
+
+
+      Every stored file will get a `fileId` assigned. Although files can be
+      retrieved only by their name, the `fileId` is necessary for the case of
+      deleting a file.
+
+
+      The **list** endpoint can be used to retrieve all currently stored files
+      of the user and their corresponding `fileId`.
+
+
+      See examples of usage below.
+paths:
+  /user/retrievecredits:
+    post:
+      tags:
+        - user > Retrieve Credits
+      summary: Retrieve Credits
+      description: Retrieve remaining user credits
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/getipaddress:
+    post:
+      tags:
+        - user > Get Available IP Address
+      summary: get avaliable ip address
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Wed, 06 Sep 2023 12:03:27 GMT
+            Server:
+              schema:
+                type: string
+                example: Kestrel
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Request-Context:
+              schema:
+                type: string
+                example: appId=cid-v1:402de9e2-3473-4411-989b-3b2a6990ef8c
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                data:
+                  - name: Virtual IP Address
+                    lastUpdated: '1693997755172'
+                    ip: 51.116.145.32
+                  - name: Outbound IP Address
+                    lastUpdated: '1693997755172'
+                    ip: >-
+                      51.116.128.150, 51.116.132.138, 51.116.132.172,
+                      51.116.132.180, 51.116.132.200, 51.116.132.205,
+                      51.116.145.32
+                  - name: Additional Outbound IP Address
+                    lastUpdated: '1693997755172'
+                    ip: >-
+                      51.116.128.150, 51.116.132.138, 51.116.132.172,
+                      51.116.132.180, 51.116.132.200, 51.116.132.205,
+                      51.116.132.231, 51.116.132.237, 51.116.132.196,
+                      51.116.132.197, 51.116.132.238, 51.116.132.239,
+                      20.79.85.218, 20.79.86.155, 20.79.86.192, 20.79.86.245,
+                      20.79.86.254, 20.79.87.28, 51.116.145.32
+  /storage/json/add:
+    post:
+      tags:
+        - Storage > JSON
+      summary: Add
+      description: You can send JSON objects as strings or JSON we handle both.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                json:
+                  key: value
+                  someOtherKey: itsValue
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/json/get:
+    post:
+      tags:
+        - Storage > JSON
+      summary: Get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                binId: w2yCVrnX
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/json/list:
+    post:
+      tags:
+        - Storage > JSON
+      summary: List
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/json/del:
+    post:
+      tags:
+        - Storage > JSON
+      summary: Del
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                binId: w2yCVrnX
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/json/put:
+    post:
+      tags:
+        - Storage > JSON
+      summary: Put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                binId: w2yCVrnX
+                json:
+                  newKey: newValue2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/globalvariables/add:
+    post:
+      tags:
+        - Storage > Global Variables
+      summary: Add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                variableName: test1
+                variableValue: '{ "hello": "world" }'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/globalvariables/del:
+    post:
+      tags:
+        - Storage > Global Variables
+      summary: Del
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                variableId: R1LWBM3BAF4gohN
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/globalvariables/list:
+    post:
+      tags:
+        - Storage > Global Variables
+      summary: List
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/globalvariables/get:
+    post:
+      tags:
+        - Storage > Global Variables
+      summary: Get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                variableName: test1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/temp:
+    post:
+      tags:
+        - Storage > Store Files 24 Hours
+      summary: add a temporary file and recieve a url
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                buffer: Dies ist ein Test
+                fileName: Test.txt
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Fri, 09 Dec 2022 07:29:06 GMT
+            Server:
+              schema:
+                type: string
+                example: Kestrel
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Request-Context:
+              schema:
+                type: string
+                example: appId=cid-v1:402de9e2-3473-4411-989b-3b2a6990ef8c
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                url: >-
+                  https://files.1saas.co/f40a1ff2d41bba986d5ee0cd7d399885a159dde2/Test.txt
+  /storage/perm/add:
+    post:
+      tags:
+        - Storage > Store Files Permanently
+      summary: Add from URL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fileUrl: https://www.africau.edu/images/default/sample.pdf
+                uploadName: testurl.pdf
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Mon, 17 Jul 2023 13:41:48 GMT
+            Server:
+              schema:
+                type: string
+                example: Kestrel
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Request-Context:
+              schema:
+                type: string
+                example: appId=cid-v1:7a4afdac-3f7c-4b41-abb0-cec4dfd004ad
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                fileId: GKC80XAM57HeGLZ
+  /storage/perm/del:
+    post:
+      tags:
+        - Storage > Store Files Permanently
+      summary: Del
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fileId: yvSgHLleJ3vnL56
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage/perm/list:
+    post:
+      tags:
+        - Storage > Store Files Permanently
+      summary: List
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Mon, 17 Jul 2023 13:43:50 GMT
+            Server:
+              schema:
+                type: string
+                example: Kestrel
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Request-Context:
+              schema:
+                type: string
+                example: appId=cid-v1:7a4afdac-3f7c-4b41-abb0-cec4dfd004ad
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                files:
+                  - fileId: GKC80XAM57HeGLZ
+                    fileName: testurl.pdf
+                  - fileId: J78jwA6Ftly9PO7
+                    fileName: test0.txt
+                  - fileId: QtdgFVfg6lbo5zl
+                    fileName: example_file.txt
+                  - fileId: qw5ATk0nuIoyuQL
+                    fileName: test2.txt
+                  - fileId: sN7JJEawp4Wu5AB
+                    fileName: fileUpload_VZ1Cxuyqa2gL95u
+                  - fileId: vCWQqdzMXOYZAdU
+                    fileName: example_file.txt
+                  - fileId: xDhZwOjtOcHUSbT
+                    fileName: example_file.txt
+                  - fileId: yvSgHLleJ3vnL56
+                    fileName: example_file.txt
+  /storage/perm/get:
+    post:
+      tags:
+        - Storage > Store Files Permanently
+      summary: Get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fileName: testurl
+                getAsUrl: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Date:
+              schema:
+                type: string
+                example: Mon, 17 Jul 2023 13:48:42 GMT
+            Server:
+              schema:
+                type: string
+                example: Kestrel
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Request-Context:
+              schema:
+                type: string
+                example: appId=cid-v1:7a4afdac-3f7c-4b41-abb0-cec4dfd004ad
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                url: >-
+                  https://files.1saas.co/8fdb00fe4a63c5a290b8709c03ace928f520db91/a4b050a9-c87d-4494-9ef7-f72b535588fd/GKC80XAM57HeGLZ/testurl.pdf

@@ -1,0 +1,7 @@
+Example 1:
+User query: Generate an image for the following text "A funny looking dad".
+Plan step 1: Generate the image with the prompt "A funny looking dad".
+API calling 1: Text to image request.
+API response: Successfully sent request to generate the image.
+Thought: I have finished executing the plan and completed the user's instructions and collected the data.
+Final Answer: Successfully generated the image "A funny looking dad" and the url is ...

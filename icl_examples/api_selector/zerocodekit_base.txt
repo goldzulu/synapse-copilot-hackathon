@@ -1,0 +1,5 @@
+Example 1:
+Background: No background
+User query: Retrieve remaining user credits.
+API calling 1: POST /user/retrievecredits
+API response: Information on how much credit is left.

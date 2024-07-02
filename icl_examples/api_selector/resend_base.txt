@@ -1,0 +1,11 @@
+Example 1:
+Background: No background
+User query: Send an email with the current subject and text.
+API calling 1: POST /emails with body 
+                {
+                    "from": "onboarding@resend.dev",
+                    "to": "dtaib@metagineers.com",
+                    "subject": "Hello World",
+                    "html": "<p>Congrats on sending your <strong>first email</strong>!</p>"
+                  }
+API response: Successful response

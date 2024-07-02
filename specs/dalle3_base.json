@@ -1,0 +1,148 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "dalle3",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://mg-test.openai.azure.com"
+      }
+    ],
+    "paths": {
+      "/openai/deployments/Dalle3/images/generations": {
+        "post": {
+          "tags": [
+            "default"
+          ],
+          "summary": "generate-image",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "prompt": "An avocado chair",
+                    "size": "1792x1024",
+                    "n": 1,
+                    "quality": "hd",
+                    "response_format": "url",
+                    "style": "vivid"
+                  }
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "in": "header",
+              "schema": {
+                "type": "string"
+              },
+              "example": "application/json"
+            },
+            {
+              "name": "api-key",
+              "in": "header",
+              "schema": {
+                "type": "string"
+              },
+              "example": "fb417e93649f463598277f8b2d70019d"
+            },
+            {
+              "name": "api-version",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "example": "2023-12-01-preview"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "headers": {
+                "Transfer-Encoding": {
+                  "schema": {
+                    "type": "string",
+                    "example": "chunked"
+                  }
+                },
+                "Content-Type": {
+                  "schema": {
+                    "type": "string",
+                    "example": "application/json"
+                  }
+                },
+                "x-ms-request-id": {
+                  "schema": {
+                    "type": "string",
+                    "example": "7d69f14c-a9bc-4ce6-b16e-1d33e9ca91ca"
+                  }
+                },
+                "x-envoy-upstream-service-time": {
+                  "schema": {
+                    "type": "integer",
+                    "example": "28564"
+                  }
+                },
+                "apim-request-id": {
+                  "schema": {
+                    "type": "string",
+                    "example": "7d69f14c-a9bc-4ce6-b16e-1d33e9ca91ca"
+                  }
+                },
+                "Strict-Transport-Security": {
+                  "schema": {
+                    "type": "string",
+                    "example": "max-age=31536000; includeSubDomains; preload"
+                  }
+                },
+                "x-content-type-options": {
+                  "schema": {
+                    "type": "string",
+                    "example": "nosniff"
+                  }
+                },
+                "x-ms-region": {
+                  "schema": {
+                    "type": "string",
+                    "example": "East US"
+                  }
+                },
+                "x-ratelimit-remaining-requests": {
+                  "schema": {
+                    "type": "integer",
+                    "example": "14"
+                  }
+                },
+                "Date": {
+                  "schema": {
+                    "type": "string",
+                    "example": "Tue, 02 Jul 2024 09:11:04 GMT"
+                  }
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object"
+                  },
+                  "example": {
+                    "created": 1719911436,
+                    "data": [
+                      {
+                        "revised_prompt": "Imagine a chair completely designed in the shape of an avocado. The backrest of the chair adopts the typical oval shape of the fruit with a smooth green texture. The seating part reflects the delicious yellowish-green interior, soft and comfortable like the flesh of an avocado. In the center, acting as the luminary focal point of the design, is the avocado's pit, represented as a plush round cushion.",
+                        "url": "https://dalleproduse.blob.core.windows.net/private/images/7d69f14c-a9bc-4ce6-b16e-1d33e9ca91ca/generated_00.png?se=2024-07-03T09%3A11%3A05Z&sig=HzfwrC768EhsSfHCUXWWjIAka1vfVVM0ZASiXm73qa4%3D&ske=2024-07-09T01%3A24%3A25Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2024-07-02T01%3A24%3A25Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

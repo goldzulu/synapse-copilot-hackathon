@@ -1,0 +1,31 @@
+# A flag to say if want to use this file for configuration
+# if true it will use this file else it will use the .env file
+use_config_file: false
+
+# openai_api_key: "YOUR OPENAI KEY"
+openai_api_key: "your_openai_api_key"
+
+# azure api key
+AZURE_OPENAI_API_VERSION: "2023-05-15"
+AZURE_OPENAI_ENDPOINT: "https://AZURE_RESOURCE.openai.azure.com"
+AZURE_OPENAI_API_KEY: "your_azure_openai_api_key"
+AZURE_OPENAI_DEPLOYMENT_NAME: "GPT4"
+
+# your trello api key and token 
+trello_api_key: "your_trello_api_key"
+trello_token: "your_trello_token"
+
+# your tmdb access token, kept for future tutorials
+tmdb_access_token: "your_tmdb_access_token"
+
+# your airtable personal access token
+AIRTABLE_PERSONAL_ACCESS_TOKEN: "your_airtable_personal_access_token"
+
+# zero code kit api key
+ZERO_CODE_KIT_API_KEY: "your_zero_code_kit_api_key"
+
+# eleven labs api key
+ELEVEN_LABS_API_KEY: "your_eleven_labs_api_key"
+
+# resend API Key
+RESEND_API_KEY: "your_resend_api_key"
