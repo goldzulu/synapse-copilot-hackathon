@@ -26,3 +26,5 @@ __pycache__/
 .DS_Store
 
 .env
+api_collection/test/resources/input/*
+api_collection/test/resources/output/*
